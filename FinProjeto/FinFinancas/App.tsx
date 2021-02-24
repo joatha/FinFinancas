@@ -42,10 +42,15 @@ export default function App() {
             leftIcon={{type: 'font-awesome', name: 'lock' }} />
             
             <Button
-            buttonStyle={styles.buttonStilo}
-            title="Login"    
-            onPress={()=>entrar()}        
-            />
+              icon={
+                <Icon
+                  name="sign-out-alt"
+                  size={15}
+                  color="white"/>
+
+              }
+              title="Entrar"
+             />
       </View>
      );  
    }
