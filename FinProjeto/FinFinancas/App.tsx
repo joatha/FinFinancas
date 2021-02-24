@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View,Image } from 'react-native';
 import {Button, Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function App() {
   
+  const [email, setEmail] = useState("")
+
   const entrar = () =>{
       alert("Bem-Vindo!")
     
@@ -29,7 +31,9 @@ export default function App() {
             placeholder="E-mail"
             style={styles.iptEmail}
             keyboardType="email-address"
-            leftIcon={{type: 'font-awesome', name: 'envelope' }} />
+            leftIcon={{type: 'font-awesome', name: 'envelope' }}
+            onChangeText={value => setEmail(value)}
+            />
 
             <Input 
             placeholder="Senha"
@@ -42,13 +46,8 @@ export default function App() {
             title="Login"    
             onPress={()=>entrar()}        
             />
-            
-    </View>
-    
-    
-  );
-  
-
+      </View>
+     );  
    }
 
 const styles = StyleSheet.create({
