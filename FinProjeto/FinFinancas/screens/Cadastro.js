@@ -20,7 +20,6 @@ export default function Cadastro({navigation}) {
   
     const validar =()=>{
         let error = false
-  
         setErrorEmail(null)
         setErrorCpf(null)
   
@@ -52,9 +51,8 @@ export default function Cadastro({navigation}) {
      
       <Input
          placeholder="E-mail"
-         onChangeText={value => {
-             setEmail(value) 
-             setErrorEmail(null)
+         onChangeText={value => {  setEmail(value) 
+                                   setErrorEmail(null)
         }}
          keyboardType="email-address"
          errorMessage={errorEmail}
