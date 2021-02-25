@@ -3,14 +3,23 @@ import { StyleSheet, View,Image } from 'react-native';
 import {Button, Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function Login() {
+export default function Login({navigation}) {
   
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
 
   const entrar = () =>{
-      alert("Bem-Vindo!")
+
+    navigation.reset({
+        index:0,
+        routes:[{name:"Principal"}]
+    })
     
-    }
+  }
+
+  const cadastrar = ()=>{
+    navigation.navigate("Cadastro")
+  }
 
   return (
  
@@ -39,12 +48,13 @@ export default function Login() {
             placeholder="Senha"
             style={styles.iptEmail}
             secureTextEntry={true}
-            leftIcon={{type: 'font-awesome', name: 'lock' }} />
+            leftIcon={{type: 'font-awesome', name: 'lock' }}
+            onChangeText={value => setPassword(value)}
+            />
            
             <View style={styles.buttonMain}> 
             <Button
-           
-              icon={
+               icon={
                 <Icon
                   name="check-circle"
                   size={20}
@@ -53,10 +63,15 @@ export default function Login() {
                 
               title="Entrar"
               buttonStyle={styles.buttonMain}
+              onPress={()=>entrar()}
              />
              
-                            
-             </View>
+             <Button
+              title="Cadastro"
+              buttonStyle={styles.buttonMain}
+              onPress={()=>cadastrar()}
+             />
+           </View>
       </View>
      );  
    }
