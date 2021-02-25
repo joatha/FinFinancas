@@ -16,7 +16,7 @@ export default function Login() {
  
   <View style={styles.container}>
          <View > 
-           <Image  style={styles.imagePng} source={require('../FinFinancas/assets/img/01.png')}/>
+           <Image  style={styles.imagePng} source={require('../assets/img/01.png')}/>
         </View>
         <Text style={styles.textTitleLogin}>Fin!</Text>
         
