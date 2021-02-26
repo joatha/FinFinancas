@@ -8,14 +8,14 @@ export default function Login({navigation}) {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
 
-  const entrar = () =>{
+ /* const entrar = () =>{
 
     navigation.reset({
         index:0,
         routes:[{name:"Principal"}]
     })
     
-  }
+  }*/
 
   const cadastrar = ()=>{
     navigation.navigate("Cadastro")
@@ -63,7 +63,7 @@ export default function Login({navigation}) {
                 
               title="Entrar"
               buttonStyle={styles.buttonMain}
-              onPress={()=>entrar()}
+              onPress={()=>navigation.navigate('Principal')}
              />
              
              <Button

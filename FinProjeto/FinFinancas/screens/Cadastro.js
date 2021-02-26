@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import {Button, CheckBox, Input, Text} from 'react-native-elements';
 import { TextInputMask } from 'react-native-masked-text';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import usuarioService from '../services/UsuarioService';
 
 export default function Cadastro({navigation}) {
     const [email, setEmail] = useState(null)
@@ -14,6 +15,7 @@ export default function Cadastro({navigation}) {
     const[errorNome, setErrorNome]= useState(null)
     const[errorcpf, setErrorCpf]= useState(null)
     const[errortelefone, setErrorTelefone]= useState(null)
+    const [isLoading, setLoading] = useState(false)
   
     let cpfField= null
     let telefoneField = null
@@ -42,7 +44,24 @@ export default function Cadastro({navigation}) {
   
     const Cadastrar =() =>{
         if(validar()){
-          alert("Usuario cadastrado")
+          setLoading(true)
+          let data={
+              email: email,
+              cpf : cpf,
+              nome:nome,
+              telefone:telefone
+          }
+          usuarioService.salvar(data)
+          .then((response) =>{
+            setLoading(false)
+            console.log(response.data)
+
+          })
+          .catch((error) =>{
+            setLoading(false)
+            console.log(error)
+            console.log("Deu erro")
+          })
         }
   }
     return (
@@ -107,6 +126,11 @@ export default function Cadastro({navigation}) {
           onPress={()=> setSelected(!isSelected)}
 
         />
+      {
+        isLoading &&
+        <Text>Carregando...</Text>
+      }
+      {!isLoading &&
       <Button
         icon={
         <Icon
@@ -118,7 +142,7 @@ export default function Cadastro({navigation}) {
         title="Cadastrar"
         onPress={()=>Cadastrar()}
         />
-     
+      }
      </View>
   );
 }
