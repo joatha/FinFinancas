@@ -45,11 +45,13 @@ export default function Cadastro({navigation}) {
     const Cadastrar =() =>{
         if(validar()){
           setLoading(true)
+
           let data={
               email: email,
               cpf : cpf,
               nome:nome,
-              telefone:telefone
+              telefone:telefone,
+              senha:senha,
           }
           usuarioService.salvar(data)
           .then((response) =>{
