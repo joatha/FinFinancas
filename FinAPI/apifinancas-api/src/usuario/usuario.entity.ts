@@ -14,4 +14,11 @@ export class Usuario {
   @Column({length: 255})
   password: string;
 
+  @Column({length: 14})
+  telefone: string;
+
+  @Column({length:14})
+  cpf: string;
+
+
 }
